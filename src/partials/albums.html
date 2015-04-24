@@ -1,8 +1,7 @@
 <div class="container">
     <div ng-controller="runAlbums">
         <div class="col-sm-2 album" ng-repeat="album in albums">
-
-            <a href="" ng-click="gotoAnchor(slide.id)">
+            <a href="" ng-href="{{album.id}}">
                 <img class="img-responsive" ng-src="{{album.image}}">
                 <div class="title">
                     <h4>{{album.title}}</h4>
