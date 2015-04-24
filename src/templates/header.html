@@ -58,7 +58,7 @@ e.stopPropagation();
 
   // add active class where nav entry is active
   $('.nav a[href="'+$(e.target).attr("href")+'"]')
-    .addClass('active');
+    .parent().addClass('active');
 //}
   // remove active class where nav entry is no longer active
 //  $('.nav a[href!="'+$(e.target).attr("href")+'"]')
