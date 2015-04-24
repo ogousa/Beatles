@@ -1,0 +1,15 @@
+.road { 
+    width:101px; height:30px; 
+    background: url('../images/sprite-beatles_run.png'); 
+   	position: absolute;
+	top:60px;
+
+	animation: road steps(6) 0.6s infinite; -webkit-animation: road steps(6) 0.6s infinite;
+}
+
+@keyframes road { from { background-position: 0px 0px; }
+  to { background-position: -606px 0px; } }
+
+@-webkit-keyframes road { 0% { background-position: 0px 0px; }
+  100% { background-position: -606px 0px; } }
+

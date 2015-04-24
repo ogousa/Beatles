@@ -1,0 +1,32 @@
+<div class="container" style="background-color: #666666; color: #aaaaaa">
+
+    ABOUT...<br>
+    ... still under construction...
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="road"></div>
+
+</div>
+
+<script>
+    document.getElementById("menuAbout").focus();   // to make current menu item selected after page reload 
+    
+    // animation
+    var width = window.innerWidth;
+    TweenMax.fromTo([".road"], width/10, {left:-100}, {left: width, delay:0, repeat:-1, repeatDelay:0, ease:Linear.easeNone});
+
+</script>

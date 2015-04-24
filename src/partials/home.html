@@ -1,0 +1,43 @@
+
+    <!-- Carousel
+    ================================================== -->
+    <div ng-controller="runCarousel" id="home">
+        <div>
+         <carousel interval="myInterval">
+            <slide ng-repeat="slide in slides" active="slide.active">
+                <a href="" ng-click="gotoAnchor(slide.id)">
+                    <img ng-src="{{slide.image}}">
+                    <div class="carousel-caption">
+                        <h1>{{slide.caption}}</h1>
+                    </div>
+                </a>
+            </slide>
+          </carousel>
+        </div>
+    </div>
+
+    <div class="main">
+        <h4>For those who maybe don't know:</h4>
+        <blockquote>
+            <h3>
+                The Beatles were an English rock band that formed in Liverpool in 1960. With members John Lennon, Paul McCartney, George Harrison and Ringo Starr, they became widely regarded as the greatest and most influential act of the rock era.
+            </h3>
+            <footer>Wikipedia</footer>
+        </blockquote>
+    </div>
+
+    <div class="video">
+    <div class="embed-responsive embed-responsive-4by3">
+    <iframe width="640" height="390" src="https://www.youtube.com/embed/cD_nBBR6z6k" frameborder="0" allowfullscreen></iframe>
+    </div>
+    </div>
+
+    <div id="john"   ng-include='"partials/john.html"'></div>
+    <div id="paul"   ng-include='"partials/paul.html"'></div>
+    <div id="george" ng-include='"partials/george.html"'></div>
+    <div id="ringo"  ng-include='"partials/ringo.html"'></div>
+
+
+<script>
+//   document.getElementById("menuHome").focus();
+</script>

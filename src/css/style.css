@@ -1,0 +1,116 @@
+.main {
+  padding: 40px;
+}
+
+img {
+    height: 202px;
+    margin: auto; 
+}
+#myCarousel {
+  margin-top: 50px;
+}
+.carousel .item {
+  height: 320px;
+  background-color: #fa3;
+} 
+.carousel-caption {
+  color: #ffffff; 
+}
+.carousel-indicators {
+  margin-bottom: 0px; 
+}
+.arrow {
+  color: #ffffff;
+}
+.arrowUp {
+  padding-top: 15px;
+  padding-right: 5px;
+  color: #ffffff;
+  float: right;
+}
+.bio {
+  margin: 0px; 
+  padding: 0px;
+  height: 40px;
+  background-color: rgba(255,170,51,1);
+  text-indent: 20px;
+}
+.years {
+  margin: 0px; 
+  padding: 0px;
+  height: 24px;
+  background-color: rgba(255,170,51,1);
+  text-indent: 20px;
+}
+h3, .main {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+blockquote h3 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+@media all and (max-device-width: 320px){
+    blockquote h3 {font-size: 19px;}
+}
+p {
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.video {
+  max-width: 640px;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.photo {
+  padding: 20px;
+  float: left;
+}
+.imageCenter {
+  margin: 0 auto;
+}
+
+/* MENU */
+body {
+  padding-top: 50px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+}
+.navbar-fixed-top .nav {
+  padding: 0;
+}
+.navbar-fixed-top .navbar-brand {
+  padding: 5px 15px;
+}
+
+
+.navbar-inverse .navbar-nav>li>a:focus {
+  background-color: #222222; 
+  outline: none;
+}
+
+.menu-selected {
+  color: #ffffff;
+  background-color: #222222;
+}
+
+/* CAROUSEL */
+.carousel-indicators li {
+  margin: 10px;
+  background-color: rgba(0,0,0,0);
+}
+.carousel-indicators .active {
+  margin: 10px;
+  background-color: rgba(255,255,200,1);
+}
+.carousel-inner>.item>a>img {
+  max-width: 160px;
+}
+
+#footer {
+  border-top: 1px solid #EEE;
+  font-size: 11px;
+  margin: 25px 0;
+  padding: 10px 0 0 0;
+}
