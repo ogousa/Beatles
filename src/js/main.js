@@ -57,6 +57,62 @@ app.controller('diskController', ['$scope', 'albumsInfo',
   }
 ]);
 
+app.controller('songController', function($scope, albumsInfo, $modal, $filter) {
+        $scope.albums = albumsInfo.albums;
+        $scope.songMap = [0];
+        $scope.all = allSongs();
+
+        function allSongs() {
+            var $a = [];
+            for(var i=0; i < $scope.albums.length; i++)
+            {
+                $a = $a.concat($scope.albums[i]['songs']);
+                $scope.songMap.push($a.length);
+            }
+            return $a;
+        }
+        
+        $scope.setSong = function(index) {
+            for(var i = 1; i < $scope.songMap.length; i++)
+            {
+                if($scope.songMap[i] >= index)    
+                {
+                    $scope.songId = i + "-" + (index - $scope.songMap[i-1]); 
+                    $scope.open('lg', 'partials/songs/s_' + $scope.songId + '.html');
+                    return;
+                }
+            }
+        }
+
+        $scope.open = function (size, path) {
+            var modalInstance = $modal.open( {templateUrl: path, controller: 'ModalInstanceCtrl', size: size} );
+        }
+
+        /*
+        $scope.order = function (order) {
+        if (order == '0') {
+            $scope.all = $filter('orderBy')($scope.all, 'toString()');
+        } else {
+            $scope.all = $filter('orderBy')($scope.all, 'allSongs()');
+        }
+
+        }  */
+
+
+    }
+);
+
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
+    $scope.ok = function () {
+        $modalInstance.close();
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+});
+
+
 app.controller('albumController', ['$scope', '$routeParams', 'albumsInfo',
   function($scope, $routeParams, albumsInfo) {
     $scope.albumId = parseInt($routeParams.id); // get the first part of id (album)
@@ -76,7 +132,8 @@ app.factory('albumsInfo', function() {
     {image: "images/albums/PleasePleaseMe.jpg", title: "Please Please Me", date: "22 March 1963", id: "#/album/1", 
         songs: [
             "I Saw Her Standing There", 
-            "Misery", "Anna (Go to Him)", 
+            "Misery", 
+            "Anna (Go to Him)", 
             "Chains",  
             "Boys", 
             "Ask Me Why",

@@ -1,8 +1,24 @@
-<div class="container">
+<div class="container" ng-controller="songController">
 
-    SONGS
+	<div class="col-sm-12">
+	    <p> 
+	    <!--
+	    	<button ng-click="order('0')">By Name</button>
+    		<button ng-click="order('1')">By Albums</button>
+    	-->	
+    	</p>
+	    <table>
+	    	<!-- AngularJS does not allow duplicates (Yellow Submarine) in ng-repeat directive. 
+	    	Define an index to determine uniqueness -->
+	      	<tr ng-repeat="song in all track by $index"> 
+	        	<td class="numberedList">{{$index+1}}.</td>
+	        	<td><a class="songList" ng-click="setSong($index+1)">{{song}}</a></td>
+	      	</tr>
 
-</div><!-- /.container -->
+	    </table>
+
+	</div>
+</div>
 
 <script>
     document.getElementById("menuSongs").focus();
