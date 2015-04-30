@@ -24,57 +24,6 @@
 
 <script type="text/javascript">
 jQuery(document).ready(function() {
-
-//    $("#menuHome").addClass("menu-selected");
-
-    var $samePage = true;
- $('a').on('click', function (e) {
-    $samePage = false;
-
-
-//  $('.nav a[href="'+$(e.target).attr("href")+'"]')
-//    .parent().addClass('active');
-//}
-  // remove active class where nav entry is no longer active
- // $('.nav a[href!="'+$(e.target).attr("href")+'"]')
-  //  .parent().removeClass('active');
-
-
- }
-
-
-
-//    $('a').on('show.bs.tab', function (e) {
-    $('a').on('blur', function (e) {
-e.stopPropagation();
-//alert(e.target + " = " + $(location).attr('href') + "======" + (e.target == $(location).attr('href'))) 
-
-
-//if($samePage)
-//{
- //   $samePage = false;
-
-    //    alert(e.target + " = " + $(location).attr('href'))
-
-  // add active class where nav entry is active
-  $('.nav a[href="'+$(e.target).attr("href")+'"]')
-    .parent().addClass('active');
-//}
-  // remove active class where nav entry is no longer active
-//  $('.nav a[href!="'+$(e.target).attr("href")+'"]')
- //   .parent().removeClass('active');
-
-});
-
-
-
-
-
-
-
-
-
-
     // automatically close dropdown navbar menu    
     $('#menu').click('li', function() {
       $('#menu').collapse('hide');

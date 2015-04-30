@@ -24,8 +24,8 @@ app.config(['$routeProvider', function ($routeProvider) {
 /**
  * Controls all other Pages
  */
-app.controller('PageCtrl', ['$anchorScroll', '$location', '$scope',
-  function ($anchorScroll, $location, $scope) {
+app.controller('PageCtrl', ['$anchorScroll', '$location', '$scope', 'anchorSmoothScroll',
+  function ($anchorScroll, $location, $scope, anchorSmoothScroll) {
     $scope.gotoAnchor = function(x) {
       var newHash = x;
       if ($location.hash() !== newHash) {
@@ -35,6 +35,15 @@ app.controller('PageCtrl', ['$anchorScroll', '$location', '$scope',
         // call $anchorScroll() explicitly, since $location.hash hasn't changed
         $anchorScroll();
       }
+    };
+
+    $scope.gotoElement = function (eID){
+      // set the location.hash to the id of
+      // the element you wish to scroll to.
+      $location.hash(eID);
+ 
+      // call $anchorScroll()
+      anchorSmoothScroll.scrollTo(eID);
     };
   }
 ]);
@@ -78,15 +87,33 @@ app.controller('songController', function($scope, albumsInfo, $modal, $filter) {
                 if($scope.songMap[i] >= index)    
                 {
                     $scope.songId = i + "-" + (index - $scope.songMap[i-1]); 
-                    $scope.open('lg', 'partials/songs/s_' + $scope.songId + '.html');
+                //    $scope.open('lg', 'partials/songs/s_' + $scope.songId + '.html');
+                    $scope.open('lg', 'partials/song.html');
                     return;
                 }
             }
         }
 
+var modalInstance;
         $scope.open = function (size, path) {
-            var modalInstance = $modal.open( {templateUrl: path, controller: 'ModalInstanceCtrl', size: size} );
+        //    var temp = "<div>zzz<div ng-include='partials/songs/s_1-3.html'></div></div>";
+            modalInstance = $modal.open( {templateUrl: path, controller: 'ModalInstanceCtrl', size: size, scope: $scope} );
+        //    modalInstance = $modal.open( {template: temp, controller: 'ModalInstanceCtrl', size: size} );
+            
+        //    modalInstance.ngClick(modalInstance.close());
+        //    modalInstance.bind('click', closemodal);
+        //    function closemodal() {
+        //           modalInstance.close();
+        //    };
+
         }
+
+
+//$("html").on("click",modalInstance.close());
+
+//$(".modal").on("click",function(event){
+//   event.stopPropagation();
+//});
 
         /*
         $scope.order = function (order) {
@@ -110,11 +137,12 @@ app.controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
+
+
 });
 
 
-app.controller('albumController', ['$scope', '$routeParams', 'albumsInfo',
-  function($scope, $routeParams, albumsInfo) {
+app.controller('albumController', function($scope, $routeParams, albumsInfo, $location, $anchorScroll, anchorSmoothScroll) {
     $scope.albumId = parseInt($routeParams.id); // get the first part of id (album)
     $scope.songId = $routeParams.id;            // get the song id (album-song)
     $scope.songs  = albumsInfo.albums[$scope.albumId-1].songs;
@@ -122,10 +150,91 @@ app.controller('albumController', ['$scope', '$routeParams', 'albumsInfo',
     $scope.title  = albumsInfo.albums[$scope.albumId-1].title;
     $scope.date   = albumsInfo.albums[$scope.albumId-1].date;
     $scope.setSong = function(index) {
-      $scope.songId = $scope.albumId + "-" + index;  
+      $scope.songId = $scope.albumId + "-" + index; 
+    //  $scope.gotoAnchor("songText"); 
+      $scope.gotoElement("songText"); 
     }
+
+    $scope.gotoAnchor = function(x) {
+      var newHash = x;
+      if($location.hash() !== newHash) 
+      {
+        $location.hash(x);  // set the $location.hash to newHash and $anchorScroll will automatically scroll to it
+      } 
+      else 
+      {
+        $anchorScroll();    // call $anchorScroll() explicitly, since $location.hash hasn't changed
+      }
+    };
+
+    $scope.gotoElement = function (eID) {
+        // set the location.hash to the id of the element you wish to scroll to.
+        $location.hash(eID);
+        // call $anchorScroll()
+        anchorSmoothScroll.scrollTo(eID);
+    };
+
+
   }
-]);
+);
+
+app.service('anchorSmoothScroll', function(){
+    this.scrollTo = function(eID) {
+        // This scrolling function is from http://www.itnewb.com/tutorial/Creating-the-Smooth-Scroll-Effect-with-JavaScript
+        var yOffset = -70;  // my settings (ogo)
+        var startY = currentYPosition();
+        var stopY = elmYPosition(eID) + yOffset;
+        var distance = stopY > startY ? stopY - startY : startY - stopY;
+        if(distance < 100) {
+            scrollTo(0, stopY); 
+            return;
+        }
+        var speed = Math.round(distance / 60);
+        if(speed >= 40) 
+            speed = 40;
+
+        var step = Math.round(distance / 25);
+        var leapY = stopY > startY ? startY + step : startY - step;
+        var timer = 0;
+        if(stopY > startY) {
+            for( var i=startY; i<stopY; i+=step ) {
+                setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+                leapY += step; if (leapY > stopY) leapY = stopY; timer++;
+            } 
+            return;
+        }
+        for( var i=startY; i>stopY; i-=step ) {
+            setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+            leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
+        }
+        
+        function currentYPosition() {
+            // Firefox, Chrome, Opera, Safari
+            if (self.pageYOffset) 
+                return self.pageYOffset;
+            // Internet Explorer 6 - standards mode
+            if (document.documentElement && document.documentElement.scrollTop)
+                return document.documentElement.scrollTop;
+            // Internet Explorer 6, 7 and 8
+            if (document.body.scrollTop) 
+                return document.body.scrollTop;
+            return 0;
+        }
+        
+        function elmYPosition(eID) {
+            var elm = document.getElementById(eID);
+            var y = elm.offsetTop;
+            var node = elm;
+            while (node.offsetParent && node.offsetParent != document.body) {
+                node = node.offsetParent;
+                y += node.offsetTop;
+            } 
+            return y;
+        }
+    };
+    
+});
+
 
 app.factory('albumsInfo', function() {  
     return {albums: [
