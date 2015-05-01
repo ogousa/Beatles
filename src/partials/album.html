@@ -12,14 +12,14 @@
             <table>
               <tr ng-repeat="song in songs">
                 <td class="numberedList">{{$index+1}}.</td>
-                <td><a class="songList" ng-click="setSong($index+1)">{{song}}</a></td>
+                <td><a class="songList" ng-click="setSong($index+1);">{{song}}</a></td>
               </tr>
             </table>
         </div>
     </div>
 
     <div id="songText" class="col-sm-7">
-        <div ng-include="'partials/songs/s_' + songId + '.html'"></div>
+        <div ng-include="getSongPath()"></div>
     </div>
 </div>
 

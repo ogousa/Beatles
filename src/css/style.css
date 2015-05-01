@@ -149,5 +149,16 @@ body {
   background-color: #666666; 
   color: #cccccc; 
   min-height: 400px; 
-  padding-top:40px;
+  padding-top: 40px;
+}
+
+/* MODAL SONG */
+.bodyFixed {
+/*  position: fixed; 
+  overflow: hidden;
+  overflow: auto;*/
+}
+
+body.modal-open {
+    overflow: hidden;
 }

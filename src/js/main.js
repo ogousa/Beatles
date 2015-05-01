@@ -2,6 +2,7 @@
  * Main AngularJS Web Application
  */
 var app = angular.module('BeatlesApp', ['ngRoute', 'ui.bootstrap']);
+var songId = -1;
 
 /**
  * Configure the Routes
@@ -63,14 +64,18 @@ app.controller('carouselController', ['$scope',
 app.controller('diskController', ['$scope', 'albumsInfo',
   function($scope, albumsInfo) {
     $scope.albums = albumsInfo.albums;
+    songId = -1;
   }
 ]);
 
-app.controller('songController', function($scope, albumsInfo, $modal, $filter) {
+app.controller('songController', function($scope, albumsInfo, $modal, $filter, $document) {
         $scope.albums = albumsInfo.albums;
         $scope.songMap = [0];
         $scope.all = allSongs();
 
+        // Register a body reference to use later
+        $scope.bodyRef = angular.element($document[0].body);
+  
         function allSongs() {
             var $a = [];
             for(var i=0; i < $scope.albums.length; i++)
@@ -87,74 +92,62 @@ app.controller('songController', function($scope, albumsInfo, $modal, $filter) {
                 if($scope.songMap[i] >= index)    
                 {
                     $scope.songId = i + "-" + (index - $scope.songMap[i-1]); 
-                //    $scope.open('lg', 'partials/songs/s_' + $scope.songId + '.html');
                     $scope.open('lg', 'partials/song.html');
                     return;
                 }
             }
         }
 
-var modalInstance;
         $scope.open = function (size, path) {
-        //    var temp = "<div>zzz<div ng-include='partials/songs/s_1-3.html'></div></div>";
-            modalInstance = $modal.open( {templateUrl: path, controller: 'ModalInstanceCtrl', size: size, scope: $scope} );
-        //    modalInstance = $modal.open( {template: temp, controller: 'ModalInstanceCtrl', size: size} );
-            
-        //    modalInstance.ngClick(modalInstance.close());
-        //    modalInstance.bind('click', closemodal);
-        //    function closemodal() {
-        //           modalInstance.close();
-        //    };
+            $scope.bodyRef.addClass('bodyFixed');    // add our overflow hidden class on opening
+            var modalInstance = $modal.open( {templateUrl: path, controller: 'ModalInstanceCtrl', size: size, scope: $scope} );
 
+            modalInstance.result.then(
+                function() {
+                    // Remove it on closing
+                    $scope.bodyRef.removeClass('bodyFixed');
+                }, 
+                function () {
+                    // Remove it on dismissal
+                    $scope.bodyRef.removeClass('bodyFixed');
+                }
+            );
         }
-
-
-//$("html").on("click",modalInstance.close());
-
-//$(".modal").on("click",function(event){
-//   event.stopPropagation();
-//});
-
-        /*
-        $scope.order = function (order) {
-        if (order == '0') {
-            $scope.all = $filter('orderBy')($scope.all, 'toString()');
-        } else {
-            $scope.all = $filter('orderBy')($scope.all, 'allSongs()');
-        }
-
-        }  */
-
 
     }
 );
 
 app.controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
     $scope.ok = function () {
+        $scope.bodyRef.removeClass('bodyFixed'); // Remove it on closing
         $modalInstance.close();
     };
 
     $scope.cancel = function () {
+        bodyRef.removeClass('bodyFixed'); // Remove it on closing
         $modalInstance.dismiss('cancel');
     };
-
-
 });
-
 
 app.controller('albumController', function($scope, $routeParams, albumsInfo, $location, $anchorScroll, anchorSmoothScroll) {
     $scope.albumId = parseInt($routeParams.id); // get the first part of id (album)
-    $scope.songId = $routeParams.id;            // get the song id (album-song)
     $scope.songs  = albumsInfo.albums[$scope.albumId-1].songs;
     $scope.image  = albumsInfo.albums[$scope.albumId-1].image;
     $scope.title  = albumsInfo.albums[$scope.albumId-1].title;
     $scope.date   = albumsInfo.albums[$scope.albumId-1].date;
+
     $scope.setSong = function(index) {
-      $scope.songId = $scope.albumId + "-" + index; 
+        songId = $scope.albumId + "-" + index; 
+
     //  $scope.gotoAnchor("songText"); 
-      $scope.gotoElement("songText"); 
+        $scope.gotoElement("songText"); 
     }
 
+
+    $scope.getSongPath = function() {
+        return (songId == -1)? null : 'partials/songs/s_' + songId + '.html';
+    }
+    
     $scope.gotoAnchor = function(x) {
       var newHash = x;
       if($location.hash() !== newHash) 
