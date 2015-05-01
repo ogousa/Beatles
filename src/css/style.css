@@ -162,3 +162,33 @@ body {
 body.modal-open {
     overflow: hidden;
 }
+
+
+.btn-group {
+  padding-left: 20px;
+  margin-top: -8px;
+}
+.btn-success.active, .btn-success:active {
+  color: #333333;
+  background-color: #eeaa00;
+  border-color: #996600;
+}
+.btn-success.hover, .btn-success:hover {
+  color: #333333;
+  background-color: #eeaa00;
+  border-color: #996600;
+}
+
+.btn-success {
+  color: #333333;
+  background-image: -webkit-linear-gradient(top,#ffee99 0,#eebb33 100%);
+  background-image: -o-linear-gradient(top,#ffee99 0,#eebb33 100%);
+  background-image: -webkit-gradient(linear,left top,left bottom,from(#ffee99),to(#eebb33));
+  background-image: linear-gradient(to bottom,#ffee99 0,#eebb33 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee99', endColorstr='#eebb33', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  background-repeat: repeat-x;
+  background-color: #eeaa33;
+  border-color: #996600;
+  min-width: 100px;
+}

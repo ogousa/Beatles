@@ -62,60 +62,70 @@ app.controller('carouselController', ['$scope',
 ]);
 
 app.controller('diskController', ['$scope', 'albumsInfo',
-  function($scope, albumsInfo) {
-    $scope.albums = albumsInfo.albums;
-    songId = -1;
-  }
+    function($scope, albumsInfo) {
+        $scope.albums = albumsInfo.albums;
+        songId = -1;
+    }
 ]);
 
 app.controller('songController', function($scope, albumsInfo, $modal, $filter, $document) {
-        $scope.albums = albumsInfo.albums;
-        $scope.songMap = [0];
-        $scope.all = allSongs();
+    $scope.albums = albumsInfo.albums;
+    $scope.all = allSongs();
 
-        // Register a body reference to use later
-        $scope.bodyRef = angular.element($document[0].body);
-  
-        function allSongs() {
-            var $a = [];
-            for(var i=0; i < $scope.albums.length; i++)
+    // Register a body reference to use later
+    $scope.bodyRef = angular.element($document[0].body);
+
+    function allSongs() {
+        var $a = []; 
+        var n = 0;
+        for(var i = 0; i < $scope.albums.length; i++)
+        {
+            for(var j = 0; j < $scope.albums[i]['songs'].length; j++) 
             {
-                $a = $a.concat($scope.albums[i]['songs']);
-                $scope.songMap.push($a.length);
-            }
-            return $a;
-        }
-        
-        $scope.setSong = function(index) {
-            for(var i = 1; i < $scope.songMap.length; i++)
-            {
-                if($scope.songMap[i] >= index)    
-                {
-                    $scope.songId = i + "-" + (index - $scope.songMap[i-1]); 
-                    $scope.open('lg', 'partials/song.html');
-                    return;
-                }
+                $a.push({num: n++, id: (i+1) + "-" + (j + 1), name: $scope.albums[i]['songs'][j]});
             }
         }
-
-        $scope.open = function (size, path) {
-            $scope.bodyRef.addClass('bodyFixed');    // add our overflow hidden class on opening
-            var modalInstance = $modal.open( {templateUrl: path, controller: 'ModalInstanceCtrl', size: size, scope: $scope} );
-
-            modalInstance.result.then(
-                function() {
-                    // Remove it on closing
-                    $scope.bodyRef.removeClass('bodyFixed');
-                }, 
-                function () {
-                    // Remove it on dismissal
-                    $scope.bodyRef.removeClass('bodyFixed');
-                }
-            );
-        }
-
+        return $a;
     }
-);
+    
+    $scope.setSong = function(index) {
+
+        $scope.songId = $scope.all[index].id;
+        $scope.open('lg', 'partials/song.html');
+        return;
+    }
+
+    $scope.open = function (size, path) {
+        $scope.bodyRef.addClass('bodyFixed');    // add our overflow hidden class on opening
+        var modalInstance = $modal.open( {templateUrl: path, controller: 'ModalInstanceCtrl', size: size, scope: $scope} );
+
+        modalInstance.result.then(
+            function() {
+                // Remove it on closing
+                $scope.bodyRef.removeClass('bodyFixed');
+            }, 
+            function () {
+                // Remove it on dismissal
+                $scope.bodyRef.removeClass('bodyFixed');
+            }
+        );
+    }
+
+
+    $scope.singleModel = 1;
+    $scope.radioModel = 'left';
+
+    $scope.checkModel = {
+        left: true,
+        right: false
+      };
+
+    var orderBy = $filter('orderBy');
+    $scope.order = function(predicate, reverse) {
+        $scope.all = orderBy($scope.all, predicate);
+    };
+
+});
 
 app.controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
     $scope.ok = function () {
@@ -167,9 +177,7 @@ app.controller('albumController', function($scope, $routeParams, albumsInfo, $lo
         anchorSmoothScroll.scrollTo(eID);
     };
 
-
-  }
-);
+});
 
 app.service('anchorSmoothScroll', function(){
     this.scrollTo = function(eID) {

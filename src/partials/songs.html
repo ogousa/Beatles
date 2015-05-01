@@ -2,17 +2,25 @@
 
 	<div class="col-sm-12">
 	    <p> 
-	    <!--
-	    	<button ng-click="order('0')">By Name</button>
-    		<button ng-click="order('1')">By Albums</button>
-    	-->	
+	    <!-- -->	
+
+		<span>order by:</span>
+		<div class="btn-group"> 
+        	<label class="btn btn-success" ng-model="radioModel" btn-radio="'left'" ng-click="order('num')" uncheckable>ALBUMS</label>
+        	<label class="btn btn-success" ng-model="radioModel" btn-radio="'right'" ng-click="order('name')" uncheckable>NAME</label>
+    	</div>
+<!-- 
+		<button ng-click="order('name')">By Name</button>
+		<button ng-click="order('num')">By Albums</button>
+ -->    	
     	</p>
 	    <table>
 	    	<!-- AngularJS does not allow duplicates (Yellow Submarine) in ng-repeat directive. 
 	    	Define an index to determine uniqueness -->
+	      	<!-- <tr ng-repeat="song in all | orderBy: 'toString()' track by $index"> --> 
 	      	<tr ng-repeat="song in all track by $index"> 
 	        	<td class="numberedList">{{$index+1}}.</td>
-	        	<td><a class="songList" ng-click="setSong($index+1)">{{song}}</a></td>
+	        	<td><a class="songList" ng-click="setSong($index)">{{song.name}}</a></td>
 	      	</tr>
 
 	    </table>
