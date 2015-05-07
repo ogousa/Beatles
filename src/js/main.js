@@ -11,23 +11,23 @@ app.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider
         // Home
-        .when("/", {templateUrl: "partials/home.html", controller: "PageCtrl"})
-        .when("/home", {templateUrl: "partials/home.html", controller: "PageCtrl"})
+        .when("/", {templateUrl: "partials/home.html", controller: "PageController"})
+        .when("/home", {templateUrl: "partials/home.html", controller: "PageController"})
         // Pages
-        .when("/albums", {templateUrl: "partials/albums.html", controller: "PageCtrl"})
-        .when("/songs", {templateUrl: "partials/songs.html", controller: "PageCtrl"})
-        .when("/about", {templateUrl: "partials/about.html", controller: "PageCtrl"})
-        .when("/album/:id", {templateUrl: "partials/album.html", controller: "albumController"})
-        .when("/song/:id", {templateUrl: "partials/song.html", controller: "songController"})
+        .when("/albums", {templateUrl: "partials/albums.html", controller: "PageController"})
+        .when("/songs", {templateUrl: "partials/songs.html", controller: "PageController"})
+        .when("/about", {templateUrl: "partials/about.html", controller: "PageController"})
+        .when("/album/:id", {templateUrl: "partials/album.html", controller: "AlbumController"})
+        .when("/song/:id", {templateUrl: "partials/song.html", controller: "SongController"})
         // else 404
-        .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
+        .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageController"});
     }
 ]);
 
 /**
  * Controls all other Pages
  */
-app.controller('PageCtrl', ['$anchorScroll', '$location', '$scope', 'anchorSmoothScroll',
+app.controller('PageController', ['$anchorScroll', '$location', '$scope', 'anchorSmoothScroll',
     function ($anchorScroll, $location, $scope, anchorSmoothScroll) {
         $scope.gotoAnchor = function(x) {
             var newHash = x;
@@ -63,14 +63,14 @@ app.controller('carouselController', ['$scope',
     }
 ]);
 
-app.controller('diskController', ['$scope', 'albumsInfo',
+app.controller('DiskController', ['$scope', 'albumsInfo',
     function($scope, albumsInfo) {
         $scope.albums = albumsInfo.albums;
         songId = -1;
     }
 ]);
 
-app.controller('songController', ['$scope', 'albumsInfo', '$modal', '$filter', '$document', 
+app.controller('SongController', ['$scope', 'albumsInfo', '$modal', '$filter', '$document', 
     function($scope, albumsInfo, $modal, $filter, $document) {
         $scope.albums = albumsInfo.albums;
         $scope.all = allSongs();
@@ -100,7 +100,7 @@ app.controller('songController', ['$scope', 'albumsInfo', '$modal', '$filter', '
 
         $scope.open = function (size, path) {
             $scope.bodyRef.addClass('bodyFixed');    // add our overflow hidden class on opening
-            var modalInstance = $modal.open( {templateUrl: path, controller: 'ModalInstanceCtrl', size: size, scope: $scope} );
+            var modalInstance = $modal.open( {templateUrl: path, controller: 'ModalInstanceController', size: size, scope: $scope} );
 
             modalInstance.result.then(
                 function() {
@@ -130,7 +130,7 @@ app.controller('songController', ['$scope', 'albumsInfo', '$modal', '$filter', '
     }
 ]);
 
-app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance',
+app.controller('ModalInstanceController', ['$scope', '$modalInstance',
     function ($scope, $modalInstance) {
         $scope.ok = function () {
             $scope.bodyRef.removeClass('bodyFixed'); // Remove it on closing
@@ -144,7 +144,7 @@ app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance',
     }
 ]);
 
-app.controller('albumController', ['$scope', '$routeParams', 'albumsInfo', '$location', '$anchorScroll', 'anchorSmoothScroll', 
+app.controller('AlbumController', ['$scope', '$routeParams', 'albumsInfo', '$location', '$anchorScroll', 'anchorSmoothScroll', 
     function($scope, $routeParams, albumsInfo, $location, $anchorScroll, anchorSmoothScroll) {
         $scope.albumId = parseInt($routeParams.id); // get the first part of id (album)
         $scope.songs  = albumsInfo.albums[$scope.albumId-1].songs;
