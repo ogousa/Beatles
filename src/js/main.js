@@ -1,7 +1,7 @@
 /**
  * Main AngularJS Web Application
  */
-var app = angular.module('BeatlesApp', ['ngRoute', 'ui.bootstrap', 'discography', 'smoothScroll']);
+var app = angular.module('BeatlesApp', ['ngRoute', 'ui.bootstrap', 'discography', 'smoothScroll', 'ngAnimate']);
 var songId = -1;
 
 /**
@@ -11,16 +11,16 @@ app.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider
         // Home
-        .when("/", {templateUrl: "partials/home.html", controller: "PageController"})
-        .when("/home", {templateUrl: "partials/home.html", controller: "PageController"})
+        .when("/",          {templateUrl: "partials/home.html",     controller: "PageController"})
+        .when("/home",      {templateUrl: "partials/home.html",     controller: "PageController"})
         // Pages
-        .when("/albums", {templateUrl: "partials/albums.html", controller: "PageController"})
-        .when("/songs", {templateUrl: "partials/songs.html", controller: "PageController"})
-        .when("/about", {templateUrl: "partials/about.html", controller: "PageController"})
-        .when("/album/:id", {templateUrl: "partials/album.html", controller: "AlbumController"})
-        .when("/song/:id", {templateUrl: "partials/song.html", controller: "SongController"})
+        .when("/albums",    {templateUrl: "partials/albums.html",   controller: "PageController"})
+        .when("/songs",     {templateUrl: "partials/songs.html",    controller: "PageController"})
+        .when("/about",     {templateUrl: "partials/about.html",    controller: "PageController"})
+        .when("/album/:id", {templateUrl: "partials/album.html",    controller: "AlbumController"})
+        .when("/song",      {templateUrl: "partials/song.html",     controller: "SongController"})
         // else 404
-        .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageController"});
+        .otherwise("/404",  {templateUrl: "partials/404.html",      controller: "PageController"});
     }
 ]);
 
@@ -51,7 +51,7 @@ app.controller('PageController', ['$anchorScroll', '$location', '$scope', 'ancho
     }
 ]);
 
-app.controller('carouselController', ['$scope',
+app.controller('MyCarouselController', ['$scope',  
     function($scope) {
       $scope.myInterval = 4000;
       $scope.slides = [
