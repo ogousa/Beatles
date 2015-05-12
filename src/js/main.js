@@ -74,6 +74,7 @@ app.controller('SongController', ['$scope', 'albumsInfo', '$modal', '$filter', '
     function($scope, albumsInfo, $modal, $filter, $document) {
         $scope.albums = albumsInfo.albums;
         $scope.all = allSongs();
+        $scope.resultList = angular.copy($scope.all);
 
         // Register a body reference to use later
         $scope.bodyRef = angular.element($document[0].body);
@@ -125,8 +126,14 @@ app.controller('SongController', ['$scope', 'albumsInfo', '$modal', '$filter', '
 
         var orderBy = $filter('orderBy');
         $scope.order = function(predicate, reverse) {
-            $scope.all = orderBy($scope.all, predicate);
+            $scope.resultList = orderBy($scope.all, predicate);
         };
+
+        $scope.searchText = "";
+        $scope.search = function(text) {
+            $scope.resultList = $filter('findText')($scope.all, text);
+        };
+
     }
 ]);
 
@@ -183,6 +190,19 @@ app.controller('AlbumController', ['$scope', '$routeParams', 'albumsInfo', '$loc
         };
     }
 ]);
+
+app.filter('findText', function() {
+  return function(source, text) {
+    
+    text = text.toLowerCase();
+    var out = [];
+    for (var i = 0; i < source.length; i++) {
+      if(source[i].name.toLowerCase().indexOf(text) != -1)
+         out.push(source[i]);
+    }
+    return out;
+  };
+})
 
 
 
