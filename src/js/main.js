@@ -127,6 +127,7 @@ app.controller('SongController', ['$scope', 'albumsInfo', '$modal', '$filter', '
         var orderBy = $filter('orderBy');
         $scope.order = function(predicate, reverse) {
             $scope.resultList = orderBy($scope.all, predicate);
+            $scope.searchText = "";
         };
 
         $scope.searchText = "";
