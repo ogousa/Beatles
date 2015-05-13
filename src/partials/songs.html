@@ -21,7 +21,7 @@
 	      	<!-- <tr ng-repeat="song in all | orderBy: 'toString()' track by $index"> --> 
 	      	<tr ng-repeat="song in resultList track by $index"> 
 	        	<td class="numberedList">{{$index+1}}.</td>
-	        	<td><a class="songList" ng-click="setSong($index)">{{song.name}}</a></td>
+	        	<td><a class="songList" ng-click="setSong(song.id)">{{song.name}}</a></td>
 	      	</tr>
 
 	    </table>

@@ -92,9 +92,9 @@ app.controller('SongController', ['$scope', 'albumsInfo', '$modal', '$filter', '
             return $a;
         }
         
-        $scope.setSong = function(index) {
+        $scope.setSong = function(id) {
 
-            $scope.songId = $scope.all[index].id;
+            $scope.songId = id;
             $scope.open('lg', 'partials/song.html');
             return;
         }
