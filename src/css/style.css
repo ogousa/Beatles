@@ -82,6 +82,7 @@ body {
 }
 .navbar-fixed-top .navbar-brand {
   padding: 5px 15px;
+  outline: none;
 }
 
 
