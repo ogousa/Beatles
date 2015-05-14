@@ -185,8 +185,6 @@ body.modal-open {
   background-image: -o-linear-gradient(top,#ffee99 0,#eebb33 100%);
   background-image: -webkit-gradient(linear,left top,left bottom,from(#ffee99),to(#eebb33));
   background-image: linear-gradient(to bottom,#ffee99 0,#eebb33 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee99', endColorstr='#eebb33', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   background-repeat: repeat-x;
   background-color: #eeaa33;
   border-color: #996600;
