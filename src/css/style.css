@@ -161,9 +161,9 @@ body {
 }
 
 body.modal-open {
-    overflow: hidden;
+    overflow: auto;
+    position: relative;
 }
-
 
 .btn-group {
   padding-left: 20px;
@@ -195,4 +195,9 @@ body.modal-open {
 .search {
   margin-left: 20px; 
   margin-top: -8px; 
+}
+
+/* prevent auto-zoom on iPhone */
+input[type='text'] {
+  font-size: 16px;
 }
