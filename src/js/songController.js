@@ -54,7 +54,9 @@ angular.module('songController', [])
           };
 
         var orderBy = $filter('orderBy');
+        var order = "num";  // default, can be "name"
         $scope.order = function(predicate, reverse) {
+            order = predicate;
             $scope.resultList = orderBy($scope.all, predicate);
             $scope.searchText = "";
         };
@@ -62,6 +64,7 @@ angular.module('songController', [])
         $scope.searchText = "";
         $scope.search = function(text) {
             $scope.resultList = $filter('findText')($scope.all, text);
+            $scope.resultList = orderBy($scope.resultList, order);
         };
 
     }
