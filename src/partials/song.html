@@ -1,7 +1,5 @@
-<div class="container" ng-controller="SongController">
-
-	<div ng-click="ok()">	<!-- close modal on click -->
-		<div ng-include="'partials/songs/s_' + songId + '.html'"></div>
-	</div>
+<div class="container-fluid" ng-click="ok()" ng-controller="SongController">
+	<!-- close modal on click -->
+	<div ng-include="'partials/songs/s_' + songId + '.html'"></div>
 </div>
 

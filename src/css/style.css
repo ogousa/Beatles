@@ -154,12 +154,6 @@ body {
 }
 
 /* MODAL SONG */
-.bodyFixed {
-/*  position: fixed; 
-  overflow: hidden;
-  overflow: auto;*/
-}
-
 body.modal-open {
     overflow: auto;
     position: relative;

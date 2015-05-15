@@ -29,19 +29,7 @@ angular.module('songController', [])
         }
 
         $scope.open = function (size, path) {
-            $scope.bodyRef.addClass('bodyFixed');    // add our overflow hidden class on opening
             var modalInstance = $modal.open( {templateUrl: path, controller: 'ModalInstanceController', size: size, scope: $scope} );
-
-            modalInstance.result.then(
-                function() {
-                    // Remove it on closing
-                    $scope.bodyRef.removeClass('bodyFixed');
-                }, 
-                function () {
-                    // Remove it on dismissal
-                    $scope.bodyRef.removeClass('bodyFixed');
-                }
-            );
         }
 
 
