@@ -1,12 +1,9 @@
 angular.module('songController', [])
-.controller('SongController', ['$scope', 'albumsInfo', '$modal', '$filter', '$document', 
-    function($scope, albumsInfo, $modal, $filter, $document) {
+.controller('SongController', ['$scope', 'albumsInfo', '$modal', '$filter', 
+    function($scope, albumsInfo, $modal, $filter) {
         $scope.albums = albumsInfo.albums;
         $scope.all = allSongs();
         $scope.resultList = angular.copy($scope.all);
-
-        // Register a body reference to use later
-        $scope.bodyRef = angular.element($document[0].body);
 
         function allSongs() {
             var $a = []; 
