@@ -1,9 +1,11 @@
 angular.module('modalController', [])
-.controller('ModalController', ['$scope', '$modalInstance',
-    function ($scope, $modalInstance) {
-        $scope.ok = function () {
-            $modalInstance.close();
-        };
-    }
-]);
+.controller('ModalController', ModalController);
+
+ModalController.$inject = ['$scope', '$modalInstance'];
+
+function ModalController($scope, $modalInstance) {
+    $scope.ok = function () {
+        $modalInstance.close();
+    };
+}
 

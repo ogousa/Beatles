@@ -200,3 +200,13 @@ input[type='text'] {
    position: relative; 
    top: -50px;
 }
+
+.beatlesImage {
+  display: none;  
+}
+@media all and (min-width: 630px) {
+  .beatlesImage {
+      display: block;
+      height: 50px;
+  }
+}

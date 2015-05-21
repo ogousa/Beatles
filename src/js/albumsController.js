@@ -1,8 +1,9 @@
 angular.module('albumsController', [])
-.controller('AlbumsController', ['$scope', 'albumsInfo',
-    function($scope, albumsInfo) {
-        $scope.albums = albumsInfo.albums;
-        songId = -1;
-    }
-]);
+.controller('AlbumsController', AlbumsController);
 
+AlbumsController.$inject = ['$scope', 'albumsInfo'];
+
+function AlbumsController($scope, albumsInfo) {
+    $scope.albums = albumsInfo.albums;
+    songId = -1;
+}

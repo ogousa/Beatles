@@ -1,6 +1,7 @@
 angular.module('smoothScroll', [])
-.service('anchorSmoothScroll', 
-    function() {
+.service('anchorSmoothScroll', anchorSmoothScroll);
+
+function anchorSmoothScroll() {
     this.scrollTo = function(eID) {
         // This scrolling function is from http://www.itnewb.com/tutorial/Creating-the-Smooth-Scroll-Effect-with-JavaScript
         var yOffset = -70;  // my settings (ogo)
@@ -54,5 +55,4 @@ angular.module('smoothScroll', [])
             return y;
         }
     };
-    
-});
+};

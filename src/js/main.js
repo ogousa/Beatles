@@ -1,7 +1,7 @@
 /**
  * Main AngularJS Web Application
  */
-var app = angular.module('BeatlesApp', [
+angular.module('BeatlesApp', [
     'ngRoute', 
     'ui.bootstrap', 
     'discography', 
@@ -14,14 +14,8 @@ var app = angular.module('BeatlesApp', [
     'albumsController', 
     'songController',
     'modalController'
-    ]);
-
-var songId = -1;
-
-/**
- * Configure the Routes
- */
-app.config(['$routeProvider', 
+    ])
+.config(['$routeProvider', 
     function ($routeProvider) {
         $routeProvider
         .when("/",          {templateUrl: "partials/home.html",     controller: "PageController"})
@@ -35,10 +29,3 @@ app.config(['$routeProvider',
         .otherwise("/",     {templateUrl: "partials/home.html",     controller: "PageController"});
     }
 ]);
-
-
-
-
-
-
-
