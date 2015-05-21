@@ -195,3 +195,8 @@ body.modal-open {
 input[type='text'] {
   font-size: 16px;
 }
+
+.top {
+   position: relative; 
+   top: -50px;
+}

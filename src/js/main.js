@@ -10,7 +10,9 @@ var app = angular.module('BeatlesApp', [
     'findText', 
     'carouselController', 
     'albumController', 
-    'songController'
+    'albumsController', 
+    'songController',
+    'modalController'
     ]);
 
 var songId = -1;
@@ -21,25 +23,23 @@ var songId = -1;
 app.config(['$routeProvider', 
     function ($routeProvider) {
         $routeProvider
-        // Home
         .when("/",          {templateUrl: "partials/home.html",     controller: "PageController"})
         .when("/home",      {templateUrl: "partials/home.html",     controller: "PageController"})
-        // Pages
-        .when("/albums",    {templateUrl: "partials/albums.html",   controller: "PageController"})
-        .when("/songs",     {templateUrl: "partials/songs.html",    controller: "PageController"})
+        .when("/albums",    {templateUrl: "partials/albums.html",   controller: "AlbumsController"})
+        .when("/songs",     {templateUrl: "partials/songs.html",    controller: "SongController"})
         .when("/about",     {templateUrl: "partials/about.html",    controller: "PageController"})
         .when("/album/:id", {templateUrl: "partials/album.html",    controller: "AlbumController"})
         .when("/song",      {templateUrl: "partials/song.html",     controller: "SongController"})
         // else 404
-        .otherwise("/404",  {templateUrl: "partials/404.html",      controller: "PageController"});
+        .otherwise("/",     {templateUrl: "partials/home.html",     controller: "PageController"});
     }
 ]);
 
 /**
  * Controls all other Pages
  */
-app.controller('PageController', ['$anchorScroll', '$location', '$scope', 'anchorSmoothScroll',
-    function ($anchorScroll, $location, $scope, anchorSmoothScroll) {
+app.controller('PageController', ['$scope', '$location', '$anchorScroll', 'anchorSmoothScroll',
+    function ($scope, $location, $anchorScroll, anchorSmoothScroll) {
         $scope.gotoAnchor = function(x) {
             var newHash = x;
             if ($location.hash() !== newHash) {
@@ -62,27 +62,6 @@ app.controller('PageController', ['$anchorScroll', '$location', '$scope', 'ancho
     }
 ]);
 
-app.controller('DiskController', ['$scope', 'albumsInfo',
-    function($scope, albumsInfo) {
-        $scope.albums = albumsInfo.albums;
-        songId = -1;
-    }
-]);
-
-
-app.controller('ModalInstanceController', ['$scope', '$modalInstance',
-    function ($scope, $modalInstance) {
-        $scope.ok = function () {
-            $scope.bodyRef.removeClass('bodyFixed'); // Remove it on closing
-            $modalInstance.close();
-        };
-
-        $scope.cancel = function () {
-            bodyRef.removeClass('bodyFixed'); // Remove it on closing
-            $modalInstance.dismiss('cancel');
-        };
-    }
-]);
 
 
 
