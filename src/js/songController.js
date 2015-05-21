@@ -22,12 +22,12 @@ angular.module('songController', [])
 
             $scope.songId = id;
             $scope.open('lg', 'partials/song.html');
-            return;
         }
 
         $scope.open = function (size, path) {
-            var modalInstance = $modal.open( {templateUrl: path, controller: 'ModalInstanceController', size: size, scope: $scope} );
+            var modalInstance = $modal.open( {templateUrl: path, controller: 'ModalController', size: size, scope: $scope} );
         }
+
 
 
         $scope.singleModel = 1;
