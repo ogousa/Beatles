@@ -10,12 +10,8 @@ function AlbumController($scope, $routeParams, albumsInfo, $location, $anchorScr
     $scope.title  = albumsInfo.albums[$scope.albumId-1].title;
     $scope.date   = albumsInfo.albums[$scope.albumId-1].date;
 
-    var songId = -1;
-
     $scope.setSong = function(index) {
         songId = $scope.albumId + "-" + index; 
-
-    //  $scope.gotoAnchor("songText"); 
         $scope.gotoElement("songText"); 
     }
 

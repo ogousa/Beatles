@@ -29,3 +29,5 @@ angular.module('BeatlesApp', [
         .otherwise("/",     {templateUrl: "partials/home.html",     controller: "PageController"});
     }
 ]);
+
+var songId = -1;
