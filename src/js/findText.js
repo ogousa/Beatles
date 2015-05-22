@@ -1,4 +1,3 @@
-
 angular.module('findText', [])
 .filter('findText', function() {
   return function(source, text) {

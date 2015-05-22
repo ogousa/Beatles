@@ -5,7 +5,7 @@
         <div>
          <carousel interval="myInterval">
             <slide ng-repeat="slide in slides" active="slide.active">
-                <a href="" ng-click="gotoAnchor(slide.id)">
+                <a href="" ng-click="gotoId(slide.id)">
                     <img ng-src="{{slide.image}}">
                     <div class="carousel-caption">
                         <h1>{{slide.caption}}</h1>

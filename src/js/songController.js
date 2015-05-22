@@ -1,12 +1,14 @@
 angular.module('songController', [])
 .controller('SongController', SongController);
 
-SongController.$inject = ['$scope', 'albumsInfo', '$modal', '$filter'];
+SongController.$inject = ['$scope', 'albumsInfo', '$modal', '$filter', 'goto'];
 
-function SongController($scope, albumsInfo, $modal, $filter) {
+function SongController($scope, albumsInfo, $modal, $filter, goto) {
     $scope.albums = albumsInfo.albums;
     $scope.all = allSongs();
     $scope.resultList = angular.copy($scope.all);
+
+    goto("fast", "top");
 
     function allSongs() {
         var $a = []; 

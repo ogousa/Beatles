@@ -13,6 +13,7 @@ angular.module('BeatlesApp', [
     'albumController', 
     'albumsController', 
     'songController',
+    'goto',
     'modalController'
     ])
 .config(['$routeProvider', 
