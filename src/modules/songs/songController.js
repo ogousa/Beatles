@@ -1,12 +1,13 @@
 angular.module('songController', [])
 .controller('SongController', SongController);
 
-SongController.$inject = ['$scope', 'albumsInfo', '$modal', '$filter', 'goto'];
+SongController.$inject = ['$scope', 'albumsInfo', '$uibModal', '$filter', 'goto'];
 
-function SongController($scope, albumsInfo, $modal, $filter, goto) {
+function SongController($scope, albumsInfo, $uibModal, $filter, goto) {
     $scope.albums = albumsInfo.albums;
     $scope.all = allSongs();
     $scope.resultList = angular.copy($scope.all);
+    $scope.songId = -1;
 
     goto("fast", "top");
 
@@ -24,13 +25,12 @@ function SongController($scope, albumsInfo, $modal, $filter, goto) {
     }
     
     $scope.setSong = function(id) {
-
         $scope.songId = id;
-        $scope.open('lg', 'partials/song.html');
+        $scope.open('lg', 'modules/songs/song.html');
     }
 
     $scope.open = function (size, path) {
-        var modalInstance = $modal.open( {templateUrl: path, controller: 'ModalController', size: size, scope: $scope} );
+        var modalInstance = $uibModal.open( {templateUrl: path, controller: 'ModalController', size: size, scope: $scope} );
     }
 
     $scope.singleModel = 1;

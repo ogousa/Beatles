@@ -1,4 +1,4 @@
-<div class="container-fluid" ng-controller="AlbumController">
+<div class="container-fluid">
     <div class="col-sm-5">
         <div class="album">
             <img class="img-responsive" ng-src="{{image}}">
@@ -19,10 +19,6 @@
     </div>
 
     <div id="songText" class="col-sm-7">
-        <div ng-include="getSongPath()"></div>
+        <div ng-include="getSongPath()"> </div>
     </div>
 </div>
-
-<script>
-    document.getElementById("menuAlbums").focus();
-</script>

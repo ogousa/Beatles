@@ -3,57 +3,65 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>BEATLES</title>
     <meta name="description" content="All About The Beatles">
-    <meta name="keywords" content="Beatles,Lennon,McCartney,Harrison,Starr,album,song">
+    <meta name="keywords" content="Beatles,Lennon,McCartney,Harrison,Starr,music,album,song">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>BEATLES</title>
     
     <link rel="apple-touch-icon" href="favicon.ico">
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- change to local for debugging
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+ -->
+    <script src="lib/jquery.min.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-theme.css">
+    <script src="lib/bootstrap.js"></script>
 
-    <!-- Our Website CSS Styles -->
+
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sprite-beatles_run.css">
 </head>
 
-<!-- Adding the ng-app declaration to initialize AngularJS -->
-<body ng-app="BeatlesApp" ng-strict-di>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+<body ng-app="app" ng-strict-di>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+ 
+    <div ui-view></div>
 
 
-    <div ng-include='"partials/header.html"'></div>
-    <div ng-view></div>
-    <div ng-include='"partials/footer.html"'></div>
      
+<!-- change to local for debugging
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-animate.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script> 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.2/ui-bootstrap-tpls.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+    <script src="lib/ocLazyLoad.js"></script>
+ -->
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-animate.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script> 
+    <script src="lib/ui-bootstrap-tpls.js"></script>
+    <script src="lib/TweenMax.min.js"></script>
+    <script src="lib/ocLazyLoad.js"></script>
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular-route.min.js"></script> 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-animate.min.js"></script>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
 
-    <script src="js/main.js"></script>
-    <script src="js/discography.js"></script>
-    <script src="js/findText.js"></script>
-    <script src="js/carouselController.js"></script>
-    <script src="js/smoothScroll.js"></script>
-    <script src="js/pageController.js"></script>
-    <script src="js/albumController.js"></script>
-    <script src="js/albumsController.js"></script>
-    <script src="js/songController.js"></script>
-    <script src="js/modalController.js"></script>
-    <script src="js/goto.js"></script>
+    <script src="modules/main.js"></script>
+    <script src="common/services/smoothScroll/smoothScroll.js"></script>
+    <script src="common/services/goto/goto.js"></script>
 
+<!-- 
     <script src="js/googleAnalytics.js"></script>
+ -->
 
 </body>
 </html>

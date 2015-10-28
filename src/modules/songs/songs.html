@@ -1,11 +1,11 @@
-<div class="container-fluid" ng-controller="SongController">
+<div class="container-fluid">
 
 	<div class="col-sm-12">
 	    <p> 
 	    	<span>order by:</span>
 			<div class="btn-group"> 
-	        	<label class="btn btn-success" ng-model="radioModel" btn-radio="'left'" ng-click="order('num')" uncheckable>ALBUMS</label>
-	        	<label class="btn btn-success" ng-model="radioModel" btn-radio="'right'" ng-click="order('name')" uncheckable>NAME</label>
+	        	<label class="btn btn-success" ng-model="radioModel" uib-btn-radio="'left'" ng-click="order('num')" uncheckable>ALBUMS</label>
+	        	<label class="btn btn-success" ng-model="radioModel" uib-btn-radio="'right'" ng-click="order('name')" uncheckable>NAME</label>
 	    	</div>
     	</p>
 
@@ -28,7 +28,3 @@
 
 	</div>
 </div>
-
-<script>
-    document.getElementById("menuSongs").focus();
-</script>

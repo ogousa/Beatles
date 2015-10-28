@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="col-sm-2 album" ng-repeat="album in albums">
+        <a href="" ng-click="onAlbum(album.id)">
+            <img class="img-responsive" ng-src="{{album.image}}">
+            <div class="title">
+                <h4>{{album.title}}</h4>
+                <h5>{{album.date}}</h5>
+            </div>
+        </a>
+    </div>
+</div>
+
