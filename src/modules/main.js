@@ -5,9 +5,7 @@ angular.module('app', [
     'oc.lazyLoad', 
     'ui.router', 
     'ui.bootstrap', 
-    'ngAnimate', 
-    'smoothScroll', 
-    'goto'
+    'ngAnimate'
 ])
 .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
     function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
@@ -41,6 +39,14 @@ angular.module('app', [
                     $ocLazyLoad.load({
                         name: 'modalController',
                         files: ['common/modal/modalController.js']
+                    }),
+                    $ocLazyLoad.load({
+                        name: 'goto',
+                        files: ['common/services/goto/goto.js']
+                    }),
+                    $ocLazyLoad.load({
+                        name: 'smoothScroll',
+                        files: ['common/services/smoothScroll/smoothScroll.js']
                     })
                 }
             }
