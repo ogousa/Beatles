@@ -17,6 +17,10 @@ function AlbumController($scope, $state, albumsInfo, goto) {
 
     $scope.setSong = function(index) {
         songId = $scope.albumId + "-" + index; 
+      
+            // $location.hash(x);
+            // angular.scrollTo(x);
+
         goto("slow", "songText"); 
     }
 

@@ -7,6 +7,7 @@ function anchorSmoothScroll() {
         var yOffset = -70;  // my settings (ogo)
         var startY = currentYPosition();
         var stopY = elmYPosition(eID) + yOffset;
+
         var distance = stopY > startY ? stopY - startY : startY - stopY;
         if(distance < 100) {
             scrollTo(0, stopY); 
@@ -44,6 +45,7 @@ function anchorSmoothScroll() {
             return 0;
         }
         
+
         function elmYPosition(eID) {
             var elm = document.getElementById(eID);
             var y = elm.offsetTop;

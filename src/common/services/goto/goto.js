@@ -20,8 +20,6 @@ function goto($location, $anchorScroll, anchorSmoothScroll) {
 		}
 		else if(how == "slow")
 		{
-	        // set the location.hash to the id of the element you wish to scroll to.
-	        $location.hash(x);
 	        anchorSmoothScroll.scrollTo(x);
 		}
 	};
