@@ -13,14 +13,8 @@ function AlbumController($scope, $state, albumsInfo, goto) {
     $scope.title  = albumsInfo.albums[$scope.albumId-1].title;
     $scope.date   = albumsInfo.albums[$scope.albumId-1].date;
 
-  //  goto("fast", "top");
-
     $scope.setSong = function(index) {
         songId = $scope.albumId + "-" + index; 
-      
-            // $location.hash(x);
-            // angular.scrollTo(x);
-
         goto("slow", "songText"); 
     }
 

@@ -1,7 +1,7 @@
 angular.module('discography', [])
 .factory('albumsInfo', function() {  
     return {albums: [
-    {image: "images/albums/PleasePleaseMe.jpg", title: "Please Please Me", date: "22 March 1963", id: "1", 
+    {image: "images/albums/PleasePleaseMe.jpg", title: "Please Please Me", date: "22 March 1963", id: 1, 
         songs: [
             "I Saw Her Standing There", 
             "Misery", 
@@ -18,7 +18,7 @@ angular.module('discography', [])
             "There's a Place", 
             "Twist and Shout"]
     },
-    {image: "images/albums/WithTheBeatles.jpg", title: "With The Beatles", date: "22 November 1963", id: "2",
+    {image: "images/albums/WithTheBeatles.jpg", title: "With The Beatles", date: "22 November 1963", id: 2,
         songs: [
             "It Won't Be Long",  
             "All I've Got to Do",  
@@ -35,7 +35,7 @@ angular.module('discography', [])
             "Not a Second Time",  
             "Money (That's What I Want)"] 
     },
-    {image: "images/albums/HardDay'sNight.jpg", title: "A Hard Day's Night", date: "26 June 1964", id: "3",
+    {image: "images/albums/HardDay'sNight.jpg", title: "A Hard Day's Night", date: "26 June 1964", id: 3,
         songs: [
             "A Hard Day's Night",  
             "I Should Have Known Better",  
@@ -51,7 +51,7 @@ angular.module('discography', [])
             "You Can't Do That",  
             "I'll Be Back"]
     },
-    {image: "images/albums/BeatlesForSale.jpg", title: "Beatles For Sale", date: "4 December 1964", id: "4",
+    {image: "images/albums/BeatlesForSale.jpg", title: "Beatles For Sale", date: "4 December 1964", id: 4,
         songs: [
             "No Reply",  
             "I'm A Loser",  
@@ -68,7 +68,7 @@ angular.module('discography', [])
             "What You're Doing",  
             "Everybody's Trying To Be My Baby"]
     },
-    {image: "images/albums/Help.jpg", title: "Help!", date: "6 August 1965", id: "5", 
+    {image: "images/albums/Help.jpg", title: "Help!", date: "6 August 1965", id: 5, 
         songs: [
             "Help!",  
             "The Night Before",  
@@ -85,7 +85,7 @@ angular.module('discography', [])
             "Yesterday",  
             "Dizzy Miss Lizzy"]
     },
-    {image: "images/albums/RubberSoul.jpg", title: "Rubber Soul", date: "3 December 1965", id: "6",
+    {image: "images/albums/RubberSoul.jpg", title: "Rubber Soul", date: "3 December 1965", id: 6,
         songs: [
             "Drive My Car",  
             "Norwegian Wood (This Bird Has Flown)",  
@@ -102,7 +102,7 @@ angular.module('discography', [])
             "If I Needed Someone",  
             "Run For Your Life"]
     },
-    {image: "images/albums/Revolver.jpg", title: "Revolver", date: "5 August 1966", id: "7",
+    {image: "images/albums/Revolver.jpg", title: "Revolver", date: "5 August 1966", id: 7,
         songs: [
             "Taxman",  
             "Eleanor Rigby",  
@@ -119,7 +119,7 @@ angular.module('discography', [])
             "Got To Get You Into My Life",  
             "Tomorrow Never Knows"]
     },
-    {image: "images/albums/Sgt.Pepper'sLonelyHeartsClubBand.jpg", title: "Sgt. Pepper's Lonely Hearts Club Band", date: "1 June 1967", id: "8",
+    {image: "images/albums/Sgt.Pepper'sLonelyHeartsClubBand.jpg", title: "Sgt. Pepper's Lonely Hearts Club Band", date: "1 June 1967", id: 8,
         songs: [
             "Sgt Pepper's Lonely Heart's Club Band",  
             "With a Little Help From My Friends",  
@@ -135,7 +135,7 @@ angular.module('discography', [])
             "Sgt. Pepper's Lonely Heart's Club Band (reprise)",  
             "A Day In The Life"]
     },
-    {image: "images/albums/MagicalMysteryTour.jpg", title: "Magical Mystery Tour", date: "27 November 1967", id: "9",
+    {image: "images/albums/MagicalMysteryTour.jpg", title: "Magical Mystery Tour", date: "27 November 1967", id: 9,
         songs: [
             "Magical Mystery Tour",  
             "The Fool On The Hill",  
@@ -149,7 +149,7 @@ angular.module('discography', [])
             "Baby, You're A Rich Man",  
             "All You Need Is Love"]
     },
-    {image: "images/albums/TheBeatles.jpg", title: "The Beatles", date: "22 November 1968", id: "10",
+    {image: "images/albums/TheBeatles.jpg", title: "The Beatles", date: "22 November 1968", id: 10,
         songs: [
             "Back In The USSR",  
             "Dear Prudence",  
@@ -182,7 +182,7 @@ angular.module('discography', [])
             "Revolution 9",  
             "Good Night"]
     },
-    {image: "images/albums/YellowSubmarine.jpg", title: "Yellow Submarine", date: "17 January 1969", id: "11",
+    {image: "images/albums/YellowSubmarine.jpg", title: "Yellow Submarine", date: "17 January 1969", id: 11,
         songs: [
             "Yellow Submarine",  
             "Only a Northern Song",  
@@ -197,7 +197,7 @@ angular.module('discography', [])
             "Pepperland Laid Waste",  
             "Yellow Submarine in Pepperland"]
     },
-    {image: "images/albums/AbbeyRoad.jpg", title: "Abbey Road", date: "26 September 1969", id: "12",
+    {image: "images/albums/AbbeyRoad.jpg", title: "Abbey Road", date: "26 September 1969", id: 12,
         songs: [
             "Come Together",   
             "Something",   
@@ -217,7 +217,7 @@ angular.module('discography', [])
             "The End",   
             "Her Majesty"]
     },
-    {image: "images/albums/LetItBe.jpg", title: "Let It Be", date: "8 May 1970", id: "13",
+    {image: "images/albums/LetItBe.jpg", title: "Let It Be", date: "8 May 1970", id: 13,
         songs: [
             "Two of Us",  
             "Dig a Pony",  

@@ -9,19 +9,17 @@ function SongController($scope, albumsInfo, $uibModal, $filter, goto) {
     $scope.resultList = angular.copy($scope.all);
     $scope.songId = -1;
 
-    goto("fast", "top");
-
     function allSongs() {
-        var $a = []; 
+        var all = []; 
         var n = 0;
         for(var i = 0; i < $scope.albums.length; i++)
         {
             for(var j = 0; j < $scope.albums[i]['songs'].length; j++) 
             {
-                $a.push({num: n++, id: (i+1) + "-" + (j + 1), name: $scope.albums[i]['songs'][j]});
+                all.push({num: n++, id: (i+1) + "-" + (j + 1), name: $scope.albums[i]['songs'][j]});
             }
         }
-        return $a;
+        return all;
     }
     
     $scope.setSong = function(id) {

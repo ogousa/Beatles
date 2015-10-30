@@ -11,7 +11,7 @@
             <a class="navbar-brand" ui-sref="app.home"><img src="images/logo.png" class="img-responsive" alt="THE BEATLES"></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="menu">
+        <div class="collapse navbar-collapse" id="menu" ng-click="onMenuClick()">
             <ul class="nav navbar-nav">
                 <li><a ui-sref="app.home" id="home">Home</a></li>
                 <li><a ui-sref="app.albums" id="albums">Albums</a></li>
@@ -23,12 +23,3 @@
     <img id="beatlesImage" src="images/help.png" class="beatlesImage"></div>
 </nav>
 <div id="top" class="top"></div>
-
-<script type="text/javascript">
-jQuery(document).ready(function() {
-    // automatically close dropdown navbar menu    
-    $('#menu').click('li', function() {
-        $('#menu').collapse('hide');
-    });
-});
-</script>

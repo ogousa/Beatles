@@ -10,17 +10,11 @@ function goto($location, $anchorScroll, anchorSmoothScroll) {
 		{
 			var newHash = x;
 			if($location.hash() !== newHash) 
-			{
 				$location.hash(x);  // set the $location.hash to newHash and $anchorScroll will automatically scroll to it
-			} 
 			else 
-			{
 				$anchorScroll();    // call $anchorScroll() explicitly, since $location.hash hasn't changed
-			}
 		}
 		else if(how == "slow")
-		{
 	        anchorSmoothScroll.scrollTo(x);
-		}
 	};
 }
